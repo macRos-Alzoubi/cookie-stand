@@ -1,0 +1,96 @@
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background: #ff7418;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 20px 10px;
+    height: 5vh;
+}
+
+.logo{
+    width: 100px;
+}
+
+.main-nav{
+    align-self: flex-end;
+}
+
+.main-nav__items{
+    display: flex;
+    align-items: center;
+}
+
+.main_nav__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.main_nav__item a:link,
+.main_nav__item a:visited {
+    padding: 0 10px;
+    text-decoration: none;
+    color: #dfdddd;
+    font-size: 120%;
+    text-transform: uppercase;
+}
+
+main{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dfdddd;
+}
+
+.salmon-cookies-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.salmon-cookies__info-card{
+    padding: 15px 30px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 5px;
+    transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.salmon-cookies__info-card:hover{
+    cursor: pointer;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.info-card__heading{
+    margin-bottom: 20px;
+    margin-left: -15px;
+    font-size: 150%;
+    font-weight: 100;
+    color: #ff7418;
+}
+
+.info-card__item{
+    margin: 5px 0;
+}
+
+footer p{
+    height: 10vh;
+    text-align: center;
+    font-size: 120%;
+    color: #ff7418;
+    padding-top: 20px;
+}
+
+
+
