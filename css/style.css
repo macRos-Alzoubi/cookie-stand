@@ -46,7 +46,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #dfdddd;
 }
 
 .salmon-cookies-info{
@@ -55,33 +54,35 @@ main{
     align-items: center;
 }
 
-.salmon-cookies__info-card{
-    padding: 15px 30px;
-    margin: 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #fff;
-    border-radius: 5px;
-    transition: box-shadow 0.25s, transform 0.25s;
+.salmon-cookies-info__table{
+    border-collapse: collapse;
+    width: 80%;
 }
 
-.salmon-cookies__info-card:hover{
-    cursor: pointer;
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
+.salmon-cookies-info__table th,
+.salmon-cookies-info__table td{
+    border: 1px solid #ff7418;
+    padding: 10px;
+    text-align: left;
 }
 
-.info-card__heading{
-    margin-bottom: 20px;
-    margin-left: -15px;
-    font-size: 150%;
-    font-weight: 100;
-    color: #ff7418;
+
+.salmon-cookies-info__table tr:first-of-type th{
+    background: #ff7418;
+    color: #fff;
+    border: 1px solid #fff;
 }
 
-.info-card__item{
-    margin: 5px 0;
+.salmon-cookies-info__table tr:nth-child(even){
+    background: #dfdddd;
+}
+
+.salmon-cookies-info__table tr:hover{
+    background: #ff7418;
+}
+
+footer{
+    background: #dfdddd;
 }
 
 footer p{
@@ -91,6 +92,3 @@ footer p{
     color: #ff7418;
     padding-top: 20px;
 }
-
-
-
