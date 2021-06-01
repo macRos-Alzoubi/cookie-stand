@@ -66,6 +66,11 @@ main{
     text-align: left;
 }
 
+.salmon-cookies-info__table th{
+    font-weight: bold;
+    font-size: 110%;
+}
+
 
 .salmon-cookies-info__table tr:first-of-type th{
     background: #ff7418;

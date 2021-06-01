@@ -49,20 +49,20 @@ function SalmonCookies(branchName, minCustomer, maxCustomer, avgOfCookies){
     const rowElement = document.createElement('tr');
     let grandSum = 0;
     for(let i =0; i < hours.length + 2; i++){
-      let tableDataElement = document.createElement('th');
+      let tableHeadElement = document.createElement('th');
       if(i === 0)
-        tableDataElement.textContent = 'Totals';
+        tableHeadElement.textContent = 'Totals';
       else if(i <= hours.length){
         let sum = 0;
         for(let j = 0; j < objectsList.length; j++){
           sum += objectsList[j].cookiesPerHour[i - 1];
         }
-        tableDataElement.textContent = sum;
+        tableHeadElement.textContent = sum;
         grandSum += sum;
       }else
-        tableDataElement.textContent = grandSum;
+        tableHeadElement.textContent = grandSum;
 
-      rowElement.appendChild(tableDataElement);
+      rowElement.appendChild(tableHeadElement);
     }
     tableElement.appendChild(rowElement);
   };
