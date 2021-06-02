@@ -50,10 +50,6 @@ header{
     border-radius: 15px;
 }
 
-/* main{
-
-} */
-
 /* Home page */
 section{
     padding: 65px 0;
@@ -180,14 +176,12 @@ footer p{
 
 /* sales page */
 .salmon-cookies-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    margin: 50px auto;
 }
 
 .salmon-cookies-info__table{
     border-collapse: collapse;
-    width: 80%;
 }
 
 .salmon-cookies-info__table th,

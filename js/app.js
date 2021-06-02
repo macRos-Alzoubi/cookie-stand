@@ -1,11 +1,9 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 const tableElement = document.createElement('table');
 const objectsList = [];
-let rendered = 0;
+let rendered = false;
 
 tableElement.classList.add('salmon-cookies-info__table');
-
-
 
 // Code from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomIntInclusive = function(min, max) {
@@ -15,7 +13,7 @@ const getRandomIntInclusive = function(min, max) {
 };
 
 const renderHeader = function(){
-  if(rendered < 2){
+  if(!rendered){
     const rowElement = document.createElement('tr');
     for(let i = 0; i < hours.length + 2; i++){
       let tableHeadElement = document.createElement('th');
@@ -31,7 +29,6 @@ const renderHeader = function(){
     }
 
     tableElement.appendChild(rowElement);
-    rendered++;
   }
 };
 
@@ -54,14 +51,10 @@ const renderFooter = function(){
 
     rowElement.appendChild(tableHeadElement);
   }
-  if(rendered < 2){
-    tableElement.appendChild(rowElement);
-    rendered++;
-  }else{
-    const totalRow = document.querySelector('tr:last-child');
-    tableElement.insertBefore(rowElement,totalRow);
-    tableElement.removeChild(tableElement.lastChild);
-  }
+
+  tableElement.appendChild(rowElement);
+  if(!rendered)
+    rendered = true;
 };
 
 function SalmonCookies(branchName, minCustomer, maxCustomer, avgOfCookies){
@@ -120,12 +113,10 @@ SalmonCookies.prototype.render = function(){
     rowElement.appendChild(tableDataElement);
   }
 
-  const lastRow = tableElement.lastChild;
-  const lastRowFirstHead = document.querySelector('tr:last-child th');
-  if(lastRowFirstHead.textContent=== 'Totals'){
-    tableElement.insertBefore(rowElement, lastRow);
-  }else
-    tableElement.appendChild(rowElement);
+  if(rendered)
+    tableElement.removeChild(tableElement.lastChild);
+
+  tableElement.appendChild(rowElement);
 };
 
 
