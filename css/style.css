@@ -224,3 +224,63 @@ a.active:visited{
     background-color: #dfdddd;
     border: 2px solid #ff7418;
 }
+
+/* Cookies Stand Form */
+
+.form{
+    width: 40%;
+    margin: 40px auto;
+}
+
+legend{
+    color: #1d1d1d;
+    font-size: 135%;
+    margin-bottom: 10px;
+    margin-left: -12px;
+}
+
+.input__group{
+    margin-bottom: 10px;
+}
+
+.input__label,
+.input__text,
+.input__number{
+    display: block;
+    width: 100%;
+}
+
+.input__text,
+.input__number{
+    padding: 7px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #a1a1a1;
+    border-radius: 3px;
+}
+
+.input__text:focus,
+.input__number:focus{
+    outline: 1px solid #ff7418;
+    border-bottom: 1px solid transparent;
+}
+
+.input__label{
+    margin-bottom: 5px;
+}
+
+.btn--submit{
+    background-color: #ff7418;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 107%;
+    transition: all 0.25s;
+}
+
+.btn--submit:hover{
+    cursor: pointer;
+    color: #ff7418;
+    background-color: #fff;
+    border: 1px solid #ff7418;
+}
