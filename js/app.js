@@ -1,4 +1,10 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+const tableElement = document.createElement('table');
+const objectsList = [];
+let rendered = 0;
+
+tableElement.classList.add('salmon-cookies-info__table');
+
 
 
 // Code from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -8,26 +14,8 @@ const getRandomIntInclusive = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 };
 
-
-const tableElement = document.createElement('table');
-tableElement.classList.add('salmon-cookies-info__table');
-const objectsList = [];
-
-function SalmonCookies(branchName, minCustomer, maxCustomer, avgOfCookies){
-  this.branchName = branchName;
-  this.minCustomer = minCustomer;
-  this.maxCustomer = maxCustomer;
-  this.avgOfCookies = avgOfCookies;
-  this.randCoust = [];
-  this.cookiesPerHour = [];
-  this.cookiesSum = 0;
-
-  this.generCostPerHour();
-  this.setCookiesPerHour();
-  this.setCookiesSum();
-  objectsList.push(this);
-
-  this.renderHeader = function(){
+const renderHeader = function(){
+  if(rendered < 2){
     const rowElement = document.createElement('tr');
     for(let i = 0; i < hours.length + 2; i++){
       let tableHeadElement = document.createElement('th');
@@ -43,29 +31,52 @@ function SalmonCookies(branchName, minCustomer, maxCustomer, avgOfCookies){
     }
 
     tableElement.appendChild(rowElement);
-  };
+    rendered++;
+  }
+};
 
-  this.renderFooter = function(){
-    const rowElement = document.createElement('tr');
-    let grandSum = 0;
-    for(let i =0; i < hours.length + 2; i++){
-      let tableHeadElement = document.createElement('th');
-      if(i === 0)
-        tableHeadElement.textContent = 'Totals';
-      else if(i <= hours.length){
-        let sum = 0;
-        for(let j = 0; j < objectsList.length; j++){
-          sum += objectsList[j].cookiesPerHour[i - 1];
-        }
-        tableHeadElement.textContent = sum;
-        grandSum += sum;
-      }else
-        tableHeadElement.textContent = grandSum;
+const renderFooter = function(){
+  const rowElement = document.createElement('tr');
+  let grandSum = 0;
+  for(let i =0; i < hours.length + 2; i++){
+    let tableHeadElement = document.createElement('th');
+    if(i === 0)
+      tableHeadElement.textContent = 'Totals';
+    else if(i <= hours.length){
+      let sum = 0;
+      for(let j = 0; j < objectsList.length; j++){
+        sum += objectsList[j].cookiesPerHour[i - 1];
+      }
+      tableHeadElement.textContent = sum;
+      grandSum += sum;
+    }else
+      tableHeadElement.textContent = grandSum;
 
-      rowElement.appendChild(tableHeadElement);
-    }
+    rowElement.appendChild(tableHeadElement);
+  }
+  if(rendered < 2){
     tableElement.appendChild(rowElement);
-  };
+    rendered++;
+  }else{
+    const totalRow = document.querySelector('tr:last-child');
+    tableElement.insertBefore(rowElement,totalRow);
+    tableElement.removeChild(tableElement.lastChild);
+  }
+};
+
+function SalmonCookies(branchName, minCustomer, maxCustomer, avgOfCookies){
+  this.branchName = branchName;
+  this.minCustomer = minCustomer;
+  this.maxCustomer = maxCustomer;
+  this.avgOfCookies = avgOfCookies;
+  this.randCoust = [];
+  this.cookiesPerHour = [];
+  this.cookiesSum = 0;
+
+  this.generCostPerHour();
+  this.setCookiesPerHour();
+  this.setCookiesSum();
+  objectsList.push(this);
 
 }
 
@@ -109,20 +120,36 @@ SalmonCookies.prototype.render = function(){
     rowElement.appendChild(tableDataElement);
   }
 
-  tableElement.appendChild(rowElement);
+  const lastRow = tableElement.lastChild;
+  const lastRowFirstHead = document.querySelector('tr:last-child th');
+  if(lastRowFirstHead.textContent=== 'Totals'){
+    tableElement.insertBefore(rowElement, lastRow);
+  }else
+    tableElement.appendChild(rowElement);
 };
 
 
 const tableParent = document.querySelector('.salmon-cookies-info');
-const seattle = new SalmonCookies('Seattle', 23, 65, 6.3);
-const tokyo = new SalmonCookies('Tokyo', 3, 24, 1.2);
-const dubai = new SalmonCookies('Dubai', 11, 38, 3.7);
-const paris = new SalmonCookies('Paris', 20, 38, 2.3);
-const lima = new SalmonCookies('Lima', 2, 16, 4.6);
-
-seattle.renderHeader();
-for(let i = 0; i < objectsList.length; i++)
-  objectsList[i].render();
-seattle.renderFooter();
-
 tableParent.appendChild(tableElement);
+
+document.querySelector('.form').addEventListener('submit', function(event){
+  event.preventDefault();
+  const target = event.target;
+
+  const locName = target.standLocation.value;
+  const minCustomer = parseInt(target.minCustomer.value);
+  const maxCustomer = parseInt(target.maxCustomer.value);
+  const avgCookiesPH = parseInt(target.avgCookiesPerHour.value);
+
+  if(locName !== '' && !isNaN(minCustomer) && !isNaN(maxCustomer) && !isNaN(avgCookiesPH)){
+    const cookieObj = new SalmonCookies(locName, minCustomer, maxCustomer, avgCookiesPH);
+
+    renderHeader();
+    cookieObj.render();
+    renderFooter();
+
+  }
+
+
+  target.reset();
+});
