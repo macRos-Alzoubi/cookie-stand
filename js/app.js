@@ -123,6 +123,17 @@ SalmonCookies.prototype.render = function(){
 const tableParent = document.querySelector('.salmon-cookies-info');
 tableParent.appendChild(tableElement);
 
+/* eslint-disable no-unused-vars */
+const seattel  = new SalmonCookies('Seattle', 23, 65, 6.3);
+const tokyo  = new SalmonCookies('Tokyo', 3, 24, 1.2);
+const dubai  = new SalmonCookies('Dubai', 11, 38, 3.7);
+const paris  = new SalmonCookies('Paris', 20, 38, 2.3);
+const lima = new SalmonCookies('Lima', 2, 16, 4.6);
+
+renderHeader();
+objectsList.forEach(obj => obj.render());
+renderFooter();
+
 document.querySelector('.form').addEventListener('submit', function(event){
   event.preventDefault();
   const target = event.target;
@@ -130,7 +141,7 @@ document.querySelector('.form').addEventListener('submit', function(event){
   const locName = target.standLocation.value;
   const minCustomer = parseInt(target.minCustomer.value);
   const maxCustomer = parseInt(target.maxCustomer.value);
-  const avgCookiesPH = parseInt(target.avgCookiesPerHour.value);
+  const avgCookiesPH = parseFloat(target.avgCookiesPerHour.value);
 
   if(locName !== '' && !isNaN(minCustomer) && !isNaN(maxCustomer) && !isNaN(avgCookiesPH)){
     const cookieObj = new SalmonCookies(locName, minCustomer, maxCustomer, avgCookiesPH);
