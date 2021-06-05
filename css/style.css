@@ -5,7 +5,8 @@
 }
 html,
 body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Staatliches', cursive;
+    color: #1d1d1d;
     background-color: whitesmoke;
 
 }
@@ -50,6 +51,11 @@ header{
     border-radius: 15px;
 }
 
+main p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #3a3a3a;
+}
+
 /* Home page */
 section{
     padding: 65px 0;
@@ -62,6 +68,7 @@ section{
 .galary{
     width: 75%;
     margin: 0 auto;
+    background-color: #3a3a3a;
 }
 
 .galary img{
@@ -115,6 +122,8 @@ section{
     overflow: hidden;
     margin-right: 10%;
     margin-bottom: 5%;
+    border-radius: 3px;
+    background-color: #cccccc;
 }
 
 
@@ -142,7 +151,7 @@ section{
 
 
 .card__location-name{
-    font-size: 120%;
+    font-size: 140%;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #1d1d1d;
@@ -156,10 +165,19 @@ section{
 
 
 ion-icon{
-    margin-right: 5px;
-    margin-bottom: -3px;
     font-size: 130%;
+    margin-right: 3px;
+    margin-bottom: -2px;
     color: #ff7418;
+}
+
+.card__details{
+    width: 95%;
+    margin: 15px auto;
+}
+
+.card__details span{
+    font-size: 90%;
 }
 
 footer{
@@ -175,51 +193,16 @@ footer p{
 
 
 /* sales page */
-.salmon-cookies-info{
-    width: 80%;
-    margin: 50px auto;
-}
 
-.salmon-cookies-info__table{
-    border-collapse: collapse;
-}
-
-.salmon-cookies-info__table th,
-.salmon-cookies-info__table td{
-    border: 1px solid #ff7418;
-    padding: 10px;
-    text-align: left;
-}
-
-.salmon-cookies-info__table th{
-    font-weight: bold;
-    font-size: 110%;
-}
-
-
-.salmon-cookies-info__table tr:first-of-type th{
-    background: #ff7418;
-    color: #fff;
-    border: 1px solid #fff;
-}
-
-.salmon-cookies-info__table tr:nth-child(even){
-    background: #dfdddd;
-}
-
-.salmon-cookies-info__table tr:hover{
-    background: #ff7418;
-}
-
-
-a.active:link,
-a.active:visited{
-    color: #ff7418;
-    background-color: #dfdddd;
-    border: 2px solid #ff7418;
-}
 
 /* Cookies Stand Form */
+
+.form,
+span,
+.salmon-cookies-info__table{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #6e6e6e;
+}
 
 .form{
     width: 40%;
@@ -227,8 +210,9 @@ a.active:visited{
 }
 
 legend{
+    font-family: 'Staatliches', cursive;
+    font-size: 175%;
     color: #1d1d1d;
-    font-size: 135%;
     margin-bottom: 10px;
     margin-left: -12px;
 }
@@ -277,4 +261,51 @@ legend{
     color: #ff7418;
     background-color: #fff;
     border: 1px solid #ff7418;
+}
+
+/* Salse Table */
+
+.salmon-cookies-info{
+    width: 80%;
+    margin: 50px auto;
+}
+
+.salmon-cookies-info__table{
+    border-collapse: collapse;
+    background-color: #cccccc;
+}
+
+.salmon-cookies-info__table th,
+.salmon-cookies-info__table td{
+    border: 1px solid #ff7418;
+    padding: 10px;
+    text-align: left;
+}
+
+.salmon-cookies-info__table th{
+    font-weight: bold;
+    font-size: 110%;
+}
+
+
+.salmon-cookies-info__table tr:first-of-type th{
+    background: #ff7418;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.salmon-cookies-info__table tr:nth-child(even){
+    background: #dfdddd;
+}
+
+.salmon-cookies-info__table tr:hover{
+    background: #ff7418;
+}
+
+
+a.active:link,
+a.active:visited{
+    color: #ff7418;
+    background-color: #dfdddd;
+    border: 2px solid #ff7418;
 }
